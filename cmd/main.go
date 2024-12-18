@@ -53,6 +53,7 @@ func main() {
 		default:
 			fmt.Println("Invalid Choice")
 		}
+		fmt.Println("Press enter to continue...")
 		fmt.Scanln()
 	}
 
