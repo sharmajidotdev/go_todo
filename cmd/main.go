@@ -5,6 +5,8 @@ import (
 	"os"
 	"os/exec"
 	"runtime"
+
+	"github.com/sharmajidotdev/go_todo/internal/todo_manager"
 )
 
 func clearScreen() {
@@ -21,6 +23,8 @@ func clearScreen() {
 }
 
 func main() {
+
+	manager := todo_manager.New()
 	choice := 0
 	msg := `Welcome to TODO app.
 
@@ -39,15 +43,30 @@ func main() {
 		fmt.Scan(&choice)
 		switch choice {
 		case 1:
-			fmt.Println("one")
+			manager.DisplayTodos()
 		case 2:
-			fmt.Println("two")
+			fmt.Printf("Enter id for todo:")
+			var id int
+			fmt.Scan(&id)
+			fmt.Printf("Enter todo:")
+			var description string
+			fmt.Scan(&description)
+			manager.AddTodo(id, description)
 		case 3:
-			fmt.Println("three")
+			fmt.Printf("Enter id for todo:")
+			var id int
+			fmt.Scan(&id)
+			fmt.Printf("Enter new todo:")
+			var description string
+			fmt.Scan(&description)
+			manager.UpdateTodo(id, description)
 		case 4:
-			fmt.Println("four")
+			fmt.Printf("Enter id for todo:")
+			var id int
+			fmt.Scan(&id)
+			manager.DeleteTodo(id)
 		case 5:
-			fmt.Println("five")
+			manager.DeleteAllTodo()
 		case 6:
 			fmt.Println("OK Bye!")
 		default:
